@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from veggies import views
+
 
 urlpatterns = [
-    path('', admin.site.urls, name='admin'),
+    path('/', admin.site.urls, name='admin'),
     path('home/', include('home.urls')),
     path('book/', include('book.urls')),
+    path('veggies/', include('veggies.urls')),
+    path('<int:id>/', views.redirect_veggies)
 ]
